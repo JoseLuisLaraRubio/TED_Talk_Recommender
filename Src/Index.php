@@ -13,6 +13,8 @@
     <title>Ted talks</title>
 </head>
 <body>
+    <h1>Ted talk Recommender</h1>
+
     <div class="search-bar">
         <input type="text" placeholder="Search TED Talks..." />
     </div>
@@ -25,7 +27,7 @@
                     <div class="title"><?= htmlspecialchars($talk[0]); ?></div>
                     <div class="speaker">by <?= htmlspecialchars($talk[1]); ?></div>
                     <div class="views"><?= number_format((int)$talk[5]) ?> views</div>
-                    <div><a href="<?= htmlspecialchars($talk[4]); ?>" target="_blank">Watch Talk</a></div>
+                    <div><a href="watch.php?title=<?= urlencode($talk[0]); ?>&url=<?= urlencode($talk[4]); ?>">Watch Talk</a></div>
                 </div>
             <?php endforeach; ?>
         </div>
