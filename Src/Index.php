@@ -20,23 +20,33 @@
     </div>
 
     <div class="recommendations">
+        
         <h2>Popular Talks</h2>
         <div class="popular-talks">
             <?php foreach (array_slice($popular_talks, 0, 10) as $talk): ?>
                 <div class="talk">
+                    
+                    <div><iframe src="https://embed.ted.com/talks/sir_ken_robinson_do_schools_kill_creativity" autoplay="1" frameborder="0"  sandbox="allow-same-origin"></iframe> </div>
                     <div class="title"><?= htmlspecialchars($talk[0]); ?></div>
                     <div class="speaker">by <?= htmlspecialchars($talk[1]); ?></div>
+
                     <div class="views"><?= number_format((int)$talk[5]) ?> views</div>
-                    <div><a href="watch.php?title=<?= urlencode($talk[0]); ?>&url=<?= urlencode($talk[4]); ?>">Watch Talk</a></div>
+                    <br>
+                 
+                    <div class="video"><a href="watch.php?title=<?= urlencode($talk[0]); ?>&url=<?= urlencode($talk[4]); ?>">Watch Talk</a></div> 
                 </div>
             <?php endforeach; ?>
         </div>
+
         <div class="you-may-like">
 
         </div>
+
         <div class="recent-talks">
-    
+                        <!-- No hay forma de saber la fecha-->
         </div>
+
+
         <div class="similar-users-watched">
     
         </div>

@@ -1,11 +1,23 @@
 body {
     font-family: Arial, sans-serif;
     margin: 30px;
-    background-color: #f9f9f9;
+    background-color: #141414;
+    
 }
 
+h1 {
+    color: white;
+}
+
+.recommendations{
+    background-color: #1e1e1e;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 10px;
+}
 .recommendations > div {
     margin-bottom: 40px;
+    background-color: #1e1e1e;
 }
 
 .recommendations h2 {
@@ -17,18 +29,21 @@ body {
 .you-may-like,
 .recent-talks,
 .similar-users-watched,
-.because-you-watched {
+.because-you-watched,
+.similar-talks,
+.more-from-event{
     display: flex;
     overflow-x: auto;
     gap: 16px;
     padding: 10px;
     scroll-snap-type: x mandatory;
+    margin-left: 10px;
 }
 
 .talk {
     flex: 0 0 auto;
-    width: 250px;
-    background: white;
+    width: 300px;
+    background: #2a2a2a;
     border-radius: 10px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     padding: 15px;
@@ -39,27 +54,40 @@ body {
     font-size: 1.1rem;
     font-weight: bold;
     margin-bottom: 5px;
+    color: #b3b3b3;
 }
 
 .speaker {
     font-style: italic;
-    color: #666;
+    color: #808080;
     margin-bottom: 8px;
 }
 
 .views {
-    color: #333;
+    color: #808080;
     margin-bottom: 8px;
 }
 
 a {
-    text-decoration: none;
-    color: #0066cc;
+  color: #ff3b3f; /* rojo más claro y brillante */
+  text-decoration: none;
+  transition: color 0.3s ease;
+  text-shadow: 0 0 3px rgba(0,0,0,0.7); /* sombra para mejorar contraste */
 }
 
 a:hover {
-    text-decoration: underline;
+  color: #ff5c5f; /* rojo más claro para hover */
+  text-decoration: underline;
 }
+
+
+a:disabled,
+.disabled-link {
+  color: #661818; /* rojo muy oscuro */
+  pointer-events: none;
+  cursor: default;
+}
+
 
 /* Optional: hide scrollbars on WebKit */
 .popular-talks::-webkit-scrollbar,
@@ -78,3 +106,43 @@ a:hover {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;     /* Firefox */
 }
+
+
+.video-player, .rate {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+#likeForm {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+
+  #likeForm button {
+    background-color: #1a1a1a; /* Gris oscuro, no negro absoluto */
+    border: 2px solid #e50914; /* Rojo estilo Netflix */
+    color: #ffffff;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+
+  #likeForm button:hover {
+    background-color: #e50914;
+    color: #fff;
+  }
+
+  #likeForm button:active {
+    transform: scale(0.95);
+  }
+
+  /* Opción para marcar el botón que fue seleccionado */
+  #likeForm button.selected {
+    background-color: #e50914;
+    color: white;
+  }
