@@ -3,7 +3,7 @@ import csv
 
 class Content_Curator:
     @staticmethod
-    def get_all_ted_talks(DATASET_PATH = "data/Talks_Dataset.csv"):
+    def get_all_ted_talks(DATASET_PATH = "../../Data/Talks_Dataset.csv"):
         """
         Get a list of all TED Talks from the dataset.
         """
@@ -39,7 +39,7 @@ class Content_Curator:
             return None
         
     @staticmethod
-    def get_all_interactions(DATASET_PATH = "data/Interactions_Dataset.csv"):
+    def get_all_interactions(DATASET_PATH = "../../Data/Talks_Dataset.csv"):
         """
         Get a list of all interactions from the dataset.
         """
