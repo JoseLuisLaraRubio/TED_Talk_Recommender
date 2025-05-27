@@ -22,5 +22,8 @@ function get_most_popular_talks($talks_count = 20) {
     return $talks;
 }
 
+function get_recently_watched_talks(){
+    
+}
 
 ?>

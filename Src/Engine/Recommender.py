@@ -43,9 +43,14 @@ class Recommender:
             # Filtrar las charlas nuevas que no ha visto el usuario objetivo
             new_recommendations = similar_user_talks - watched_talks
             recommended_talks.update(new_recommendations)
-            
-            final_recommendations = list(recommended_talks)[:NUMBER_OF_RECOMMENDATIONS]
-            
+                        
+        # Convert talk IDs to detailed metadata
+        final_recommendations = []
+        for talk_id in list(recommended_talks)[:NUMBER_OF_RECOMMENDATIONS]:
+            talk_info = content_curator.get_ted_talk_by_id(talk_id)
+            if talk_info:
+                final_recommendations.append(talk_info)
+
         return final_recommendations
 
 # example usage

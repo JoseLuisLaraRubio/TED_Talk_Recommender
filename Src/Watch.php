@@ -5,7 +5,7 @@
     $tedUrl = $_GET['url'] ?? '';
 
     $embedUrl = str_replace('www.ted.com', 'embed.ted.com', $tedUrl);
-    $similar_talks = getRecommendationsByContent($title, 10);
+    $similar_talks = get_recommendations_by_content($title, 10);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,10 +50,7 @@
         <?php foreach (array_slice($similar_talks, 0, 10) as $talk): ?>
                 <div class="talk">
                     <div><a href="watch.php?title=<?= urlencode($talk['title']); ?>&url=<?= urlencode($talk['url']); ?>">Watch Talk</a></div> 
-                    <?php
-                    $embedUrl = str_replace('www.ted.com', 'embed.ted.com', $talk['url']);
-                    $embedUrl = rtrim($embedUrl);
-                    ?>
+                    <?php $embedUrl = str_replace('www.ted.com', 'embed.ted.com', $talk['url']); ?>
                     <iframe src="<?= htmlspecialchars($embedUrl) ?>" autoplay="0" frameborder="0"  sandbox="allow-same-origin"></iframe>                    
                     <div class="title"><?= htmlspecialchars($talk['title']); ?></div>
                     <div class="speaker">by <?= htmlspecialchars($talk['main_speaker']); ?></div>
