@@ -14,6 +14,8 @@ def main():
         user_id = int(sys.argv[2])
         number = int(sys.argv[3]) if len(sys.argv) > 3 else 5
         result = Recommender.recommend_based_on_user_interactions(user_id, number)
+    elif mode == "random":
+        result = Recommender.recommend_random_ted_talk()
     else:
         result = {"error": "Invalid mode"}
 

@@ -1,5 +1,6 @@
 import pandas as pd
 import csv
+import random
 
 class Content_Curator:
     @staticmethod
@@ -65,23 +66,12 @@ class Content_Curator:
         df = df[df['percentage_watched'] > 10]
         
         return df
-
-
-# Get First 200 titles of dataset of TED Talks
-if __name__ == "__main__":
-    curator = Content_Curator()
-    ted_talks = curator.get_all_ted_talks()
-    print(f"Total TED Talks: {len(ted_talks)}")
     
-    # Print first 200 titles
-    for title in list(ted_talks.keys())[:200]:
-        print(title)
-    
-    # Example of getting a specific TED Talk by title
-    talk_info = curator.get_ted_talk_by_title("The power of vulnerability")
-    print(talk_info)
-    
-    # Get all interactions
-    interactions = curator.get_all_interactions()
-    print(interactions.head())       
-        
+    @staticmethod
+    def get_random_ted_talk():
+        """
+        Get a random selection of TED Talks.
+        """
+        ted_talks = Content_Curator.get_all_ted_talks()
+        random_talk = random.choice(list(ted_talks.items()))
+        return {'title': random_talk[0], **random_talk[1]}  
