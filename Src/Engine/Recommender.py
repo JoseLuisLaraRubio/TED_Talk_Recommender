@@ -52,9 +52,11 @@ class Recommender:
                 final_recommendations.append(talk_info)
 
         return final_recommendations
-
-# example usage
-if __name__ == "__main__":
-    recommender = Recommender()
-    print(recommender.recommend_based_on_content("The power of vulnerability"))
-    print(recommender.recommend_based_on_user_interactions())
+    
+    @staticmethod
+    def recommend_random_ted_talk():
+        """
+        Recommend a random TED Talk.
+        """
+        content_curator = Content_Curator.Content_Curator()
+        return content_curator.get_random_ted_talk()
