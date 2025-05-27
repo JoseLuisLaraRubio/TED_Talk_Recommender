@@ -15,12 +15,7 @@
 <body>
     <h1>Ted talk Recommender</h1>
 
-    <div class="search-bar">
-        <input type="text" placeholder="Search TED Talks..." />
-    </div>
-
     <div class="recommendations">
-        
         <h2>Popular Talks</h2>
         <div class="popular-talks">
             <?php foreach (array_slice($popular_talks, 0, 10) as $talk): ?>
@@ -41,11 +36,6 @@
         <div class="you-may-like">
 
         </div>
-
-        <div class="recent-talks">
-                        <!-- No hay forma de saber la fecha-->
-        </div>
-
 
         <div class="similar-users-watched">
     
