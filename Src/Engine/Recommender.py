@@ -54,6 +54,21 @@ class Recommender:
         return final_recommendations
     
     @staticmethod
+    def recommend_based_on_user_interactions_and_content(user_recommended_talks, NUMBER_OF_RECOMMENDATIONS=5):
+        """
+        Recommend TED Talks based on both user interactions and content similarity.
+        Returns a dictionary mapping each watched talk to its recommended talks.
+        """
+        content_curator = Content_Curator.Content_Curator()
+        content_matcher = Content_Matcher.Content_Matcher()
+        
+        recommendations = {}
+        
+        print(f"User recommended talks: {user_recommended_talks}")
+        
+        return recommendations
+    
+    @staticmethod
     def recommend_random_ted_talk():
         """
         Recommend a random TED Talk.
