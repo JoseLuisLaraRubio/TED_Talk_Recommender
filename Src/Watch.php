@@ -1,8 +1,11 @@
 <?php
+    require 'Recommend.php';
+
     $title = $_GET['title'] ?? 'Unknown Talk';
     $tedUrl = $_GET['url'] ?? '';
 
     $embedUrl = str_replace('www.ted.com', 'embed.ted.com', $tedUrl);
+    $similar_talks = getRecommendationsByContent($title, 10);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,25 +36,29 @@
     <div class="rate">
         <!-- Rating system can go here -->
         <form id="likeForm">
-            <button type="button" data-like="1">👍 Me gusta</button>
-            <button type="button" data-like="0">👎 No me gusta</button>
+            <button type="button" data-like="1">👍 Like</button>
+            <button type="button" data-like="0">👎 Dislike</button>
         </form>
     </div>
 
     <div class="recommendations">
+        <h2>Similar Talks</h2>
+
         <div class="more-from-event"></div>
         <div class="similar-talks">
 
-        <?php foreach (array_slice($similar_taks, 0, 10) as $talk): ?>
+        <?php foreach (array_slice($similar_talks, 0, 10) as $talk): ?>
                 <div class="talk">
-                    <div><a href="watch.php?title=<?= urlencode($talk[0]); ?>&url=<?= urlencode($talk[4]); ?>">Watch Talk</a></div> 
+                    <div><a href="watch.php?title=<?= urlencode($talk['title']); ?>&url=<?= urlencode($talk['url']); ?>">Watch Talk</a></div> 
+                    <?php
+                    $embedUrl = str_replace('www.ted.com', 'embed.ted.com', $talk['url']);
+                    $embedUrl = rtrim($embedUrl);
+                    ?>
+                    <iframe src="<?= htmlspecialchars($embedUrl) ?>" autoplay="0" frameborder="0"  sandbox="allow-same-origin"></iframe>                    
+                    <div class="title"><?= htmlspecialchars($talk['title']); ?></div>
+                    <div class="speaker">by <?= htmlspecialchars($talk['main_speaker']); ?></div>
 
-                
-                    <div><iframe src="https://embed.ted.com/talks/sir_ken_robinson_do_schools_kill_creativity" frameborder="0" allow="clipboard-write; encrypted-media; gyroscope; picture-in-picture"  sandbox="allow-scripts allow-same-origin"></iframe> </div>
-                    <div class="title"><?= htmlspecialchars($talk[0]); ?></div>
-                    <div class="speaker">by <?= htmlspecialchars($talk[1]); ?></div>
-
-                    <div class="views"><?= number_format((int)$talk[5]) ?> views</div>
+                    <div class="views"><?= number_format((int)$talk['views']) ?> views</div>
                     <br>
                  
 

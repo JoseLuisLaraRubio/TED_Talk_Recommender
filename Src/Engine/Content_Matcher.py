@@ -24,7 +24,7 @@ class Content_Matcher:
         """
         Check if two TED Talks contents are similar by their tags.
         """
-        return Content_Matcher.__dice_similarity(content1['tags'], content2['tags']) > 0.5
+        return Content_Matcher.__dice_similarity(content1['tags'], content2['tags']) > 0.4
     
     @staticmethod
     def __dice_similarity(tags1, tags2):

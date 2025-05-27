@@ -1,2 +1,3 @@
-user_id, talk_id, rating, percentage_watched
-
+user_id,talk_id,rating,percentage_watched
+1, 5, 10, 15
+0, 2, 1, 20

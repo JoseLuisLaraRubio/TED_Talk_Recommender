@@ -3,7 +3,7 @@ import csv
 
 class Content_Curator:
     @staticmethod
-    def get_all_ted_talks(DATASET_PATH = "../../Data/Talks_Dataset.csv"):
+    def get_all_ted_talks(DATASET_PATH = "../Data/Talks_Dataset.csv"):
         """
         Get a list of all TED Talks from the dataset.
         """
@@ -32,18 +32,18 @@ class Content_Curator:
         try:
             ted_talks_information = Content_Curator.get_all_ted_talks()
             ted_talk = ted_talks_information[title]
-            print(f"TED Talk found: {title}")
+            #print(f"TED Talk found: {title}")
             return {'title': title, **ted_talk}
         except Exception as e:
-            print(f"Error al obtener la TED Talk: {e}")
+            #print(f"Error al obtener la TED Talk: {e}")
             return None
         
     @staticmethod
-    def get_all_interactions(DATASET_PATH = "../../Data/Talks_Dataset.csv"):
+    def get_all_interactions(INTERACTIONS_DATASET = "../Data/Interactions.csv"):
         """
         Get a list of all interactions from the dataset.
         """
-        df = pd.read_csv("data/Interactions.csv", sep=",")
+        df = pd.read_csv(INTERACTIONS_DATASET, sep=",")
         df = df[df['percentage_watched'] > 10]
         
         return df

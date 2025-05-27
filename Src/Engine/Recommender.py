@@ -19,7 +19,7 @@ class Recommender:
         return recommendations[:NUMBER_OF_RECOMMENDATIONS]
     
     @staticmethod
-    def recommend_based_on_user_interactions(USER_ID=0, NUMBER_OF_RECOMMENDATIONS=5):
+    def recommend_based_on_user_interactions(USER_ID=1, NUMBER_OF_RECOMMENDATIONS=5):
         """
         Recommend TED Talks based on user interactions.
         """
