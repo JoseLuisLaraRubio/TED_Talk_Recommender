@@ -5,8 +5,7 @@
     $user_id = $_GET["user_id"] ?? 0;
 
     $popular_talks = get_most_popular_talks(20);
-    $user_recommended_talks = get_recommendations_by_user($user_id, 20);
-
+    $user_recommended_talks = get_recommendations_by_user($user_id, 20) ?? get_recommendations_by_user(0, 20);
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +35,7 @@
                     <div class="views"><?= number_format((int)$talk['views']) ?> views</div>
                     <br>
                  
-                    <div class="video"><a href="watch.php?title=<?= urlencode($talk['title']); ?>&url=<?= urlencode($talk['url']); ?>">Watch Talk</a></div> 
+                    <div class="video"><a href="watch.php?title=<?= urlencode($talk['title']); ?>&url=<?= urlencode($talk['url']); ?>&user_id=<?= urlencode($user_id) ?>">Watch Talk</a></div> 
                 </div>
             <?php endforeach; ?>
         </div>
@@ -57,7 +56,7 @@
                     <div class="views"><?= number_format((int)$talk['views']) ?> views</div>
                     <br>
                  
-                    <div class="video"><a href="watch.php?title=<?= urlencode($talk['title']); ?>&url=<?= urlencode($talk['url']); ?>">Watch Talk</a></div> 
+                    <div class="video"><a href="watch.php?title=<?= urlencode($talk['title']); ?>&url=<?= urlencode($talk['url']); ?>&user_id=<?= urlencode($user_id); ?>">Watch Talk</a></div> 
                 </div>
             <?php endforeach; ?>
         </div>
