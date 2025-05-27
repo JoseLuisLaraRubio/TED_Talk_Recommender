@@ -1,7 +1,7 @@
 <?php
 
     function get_most_popular_talks($talks_count = 20){
-        $csvFile = fopen('../Data/Talks_Dataset/Talks_Dataset.csv', 'r');
+        $csvFile = fopen('../Data/Talks_Dataset.csv', 'r');
 
         $headers = fgetcsv($csvFile);
         $talks = [];
