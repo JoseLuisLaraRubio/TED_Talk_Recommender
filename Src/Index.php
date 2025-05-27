@@ -6,6 +6,7 @@
 
     $popular_talks = get_most_popular_talks(20);
     $user_recommended_talks = get_recommendations_by_user($user_id, 20) ?? get_recommendations_by_user(0, 20);
+    $random_talk = get_random_talk();
 ?>
 
 <!DOCTYPE html>
@@ -14,10 +15,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Index_Styles.css">
-    <title>Ted talks</title>
+    <title>Ted Talks</title>
 </head>
 <body>
-    <h1>Ted talk Recommender</h1>
+    <h1>Ted Talk Recommender</h1>
 
     <div class="recommendations">
         <h2>Popular Talks</h2>
@@ -63,6 +64,23 @@
 
         <div class="because-you-watched">
                 
+        </div>
+
+        <div class="random-recommendation">
+            <h2>Want some random recommendation?</h2>
+            <div class="talk">
+                <?php
+                $embedUrl = str_replace('www.ted.com', 'embed.ted.com', $random_talk['url']);
+                ?>
+                <div><iframe src="<?= $embedUrl; ?>" autoplay="0" frameborder="0" sandbox="allow-same-origin"></iframe></div>
+                <div class="title"><?= htmlspecialchars($random_talk['title']); ?></div>
+                <div class="speaker">by <?= htmlspecialchars($random_talk['main_speaker']); ?></div>
+                <div class="views"><?= number_format((int)$random_talk['views']) ?> views</div>
+                <br>
+                <div class="video">
+                    <a href="watch.php?title=<?= urlencode($random_talk['title']); ?>&url=<?= urlencode($random_talk['url']); ?>&user_id=<?= urlencode($user_id); ?>" class="random-button">Watch Talk</a>
+                </div>
+            </div>
         </div>
     <div>
 </body>
